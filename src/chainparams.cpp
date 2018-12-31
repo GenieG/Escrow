@@ -30,6 +30,26 @@ struct SeedSpec6 {
  * Main network
  */
 
+ bool CheckProof(uint256 hash, unsigned int nBits)
+ {
+     bool fNegative;
+     bool fOverflow;
+     uint256 bnTarget;
+
+
+     bnTarget.SetCompact(nBits, &fNegative, &fOverflow);
+
+     // Check range
+     if (fNegative || bnTarget == 0 || fOverflow)
+         return false; //error("CheckProofOfWork() : nBits below minimum work");
+
+     // Check proof of work matches claimed amount
+     if (hash > bnTarget)
+         return false; //error("CheckProofOfWork() : hash doesn't match nBits");
+
+     return true;
+ }
+
 //! Convert the pnSeeds6 array into usable address objects.
 static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data, unsigned int count)
 {
@@ -167,41 +187,24 @@ public:
         genesis.nBits = 0x1e0ffff0;
         genesis.nNonce = 470493;
 
-        hashGenesisBlock =  uint256("0x");
-        if(false && genesis.GetHash() != uint256("0x"))
-{
-      printf("MSearching for genesis block...\n");
-      //uint256 hashTarget;
-      //hashTarget.SetCompact(genesis.nBits);
-      uint256 hashTarget = CBigNum().SetCompact(genesis.nBits).getuint256();
-      while(uint256(genesis.GetHash()) > hashTarget)
-      {
-          ++genesis.nNonce;
-          if (genesis.nNonce == 0)
-          {
-              printf("Mainnet NONCE WRAPPED, incrementing time");
-              std::cout << std::string("Mainnet NONCE WRAPPED, incrementing time:\n");
-              ++genesis.nTime;
-          }
-          if (genesis.nNonce % 10000 == 0)
-          {
-              printf("Mainnet: nonce %08u: hash = %s \n", genesis.nNonce, genesis.GetHash().ToString().c_str());
-          }
-      }
-      printf("Mainnet block.nTime = %u \n", genesis.nTime);
-      printf("Mainnet block.nNonce = %u \n", genesis.nNonce);
-      printf("Mainnet block.hashMerkleRoot: %s\n", genesis.hashMerkleRoot.ToString().c_str());
-      printf("Mainnet block.GetHash = %s\n", genesis.GetHash().ToString().c_str());
-}
+        std::cout << "main net" << std::endl;
+        while (!CheckProof(genesis.GetHash(), genesis.nBits)) {
+            genesis.nNonce ++;
+        }
+
+        std::cout << genesis.nNonce << std::endl;
+        std::cout << genesis.GetHash().GetHex() << std::endl;
+        std::cout << genesis.hashMerkleRoot.GetHex() << std::endl;
+
+        hashGenesisBlock =  uint256("0x00000ba75f5935d0f0b265c98075327f4f165e59ae6d8d99fbdbe407b9ff3f83");
 
         hashGenesisBlock = genesis.GetHash();
         //printf("%s\n", hashGenesisBlock.ToString().c_str());
         //printf("%s\n", genesis.hashMerkleRoot.ToString().c_str());
-        assert(hashGenesisBlock == uint256
-        ("0x00000ba75f5935d0f0b265c98075327f4f165e59ae6d8d99fbdbe407b9ff3f83"));
+        assert(hashGenesisBlock == uint256("0x00000ba75f5935d0f0b265c98075327f4f165e59ae6d8d99fbdbe407b9ff3f83"));
         assert(genesis.hashMerkleRoot == uint256("0x4ebe5a72637c1f53ba3852a0ddfb8e9f6a82f32bbeaa100cf23c835b5b2abf41"));
 
-        
+
         vSeeds.push_back(CDNSSeedData("Node-1", "159.89.4.8"));      // Single node address
         vSeeds.push_back(CDNSSeedData("Node-2", "159.89.4.9"));       // Single node address
         vSeeds.push_back(CDNSSeedData("Node-3", "159.89.4.10"));       // Single node address
@@ -298,7 +301,7 @@ public:
         genesis.nNonce = 34296;
 
         hashGenesisBlock = genesis.GetHash();
-        
+
         //assert(hashGenesisBlock == uint256("00000874d6368a584d19762ab65bd623f8497fff686498afc986e13495feb3ee"));
 
         vFixedSeeds.clear();
@@ -366,7 +369,7 @@ public:
 
         hashGenesisBlock = genesis.GetHash();
         nDefaultPort = 12936;
-       
+
         //assert(hashGenesisBlock == uint256("6f2450eb7a7724b3fbdf5b3418a0fcae3899eacc7e0199274cfd0fb8ff833d9f"));
 
         vFixedSeeds.clear(); //! Testnet mode doesn't have any fixed seeds.
