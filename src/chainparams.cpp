@@ -172,7 +172,7 @@ public:
          *     CTxOut(nValue=50.00000000, scriptPubKey=0xA9037BAC7050C479B121CF)
          *   vMerkleTree: e0028e
          */
-        const char* pszTimestamp = "new genesis v2.6";
+        const char* pszTimestamp = "new genesis v2.7";
         CMutableTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -183,9 +183,19 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime = 1546241000;
+        genesis.nTime = 1546250000;
         genesis.nBits = 0x1e0fffff;
         genesis.nNonce = 3824176;
+
+        std::cout << "Main net" << std::endl;
+        while (!CheckProof(genesis.GetHash(), genesis.nBits)) {
+            genesis.nNonce ++;
+        }
+
+        std::cout << genesis.nNonce << std::endl;
+        std::cout << genesis.GetHash().GetHex() << std::endl;
+        std::cout << genesis.hashMerkleRoot.GetHex() << std::endl;
+
         hashGenesisBlock =  uint256("0x000005f075688746184ec2d628ec60d34bce710639e2c1f47a4ad1d078b3aca8");
 
 
@@ -216,14 +226,14 @@ public:
         fDefaultConsistencyChecks = false;
         fRequireStandard = true;
         fMineBlocksOnDemand = false;
-        fSkipProofOfWorkCheck = true;          // default false
+        fSkipProofOfWorkCheck = false;          // default false
         fTestnetToBeDeprecatedFieldRPC = false;
         fHeadersFirstSyncingActive = false;
 
         nPoolMaxTransactions = 3;
         strSporkKey = "04ce17d065aeec5072d4b3a4e8b7c83a95e65069c743d783b89acf92f39a8ab6302c15150fedd3f214bd4a89c323efc87e6a0116f142c1160fee5ca5a051e6dadd";
         strObfuscationPoolDummyAddress = "EbajAPnKBpY6iq626E2sSrCiovi9q3w351";
-        nStartMasternodePayments = 1545653389; //Wed, 25 Jun 2014 20:36:16 GMT
+        nStartMasternodePayments = 1546260000; //Wed, 25 Jun 2014 20:36:16 GMT
 
         /** Zerocoin */
         zerocoinModulus = "25195908475657893494027183240048398571429282126204032027777137836043662020707595556264018525880784"
