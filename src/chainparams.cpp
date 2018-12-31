@@ -187,7 +187,7 @@ public:
         genesis.nBits = 0x1e0fffff;
         genesis.nNonce = 3427806;
         hashGenesisBlock =  uint256("0x");
-                if(false && genesis.GetHash() != uint256("0x"))
+                if(true && genesis.GetHash() != uint256("0x"))
         {
               printf("MSearching for genesis block...\n");
               //uint256 hashTarget;
