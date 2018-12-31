@@ -36,16 +36,15 @@ struct SeedSpec6 {
      bool fOverflow;
      uint256 bnTarget;
 
-
      bnTarget.SetCompact(nBits, &fNegative, &fOverflow);
 
      // Check range
-     if (fNegative || bnTarget == 0 || fOverflow)
-         return false; //error("CheckProofOfWork() : nBits below minimum work");
+     if (fNegative || bnTarget == 0 || fOverflow || bnTarget > Params().ProofOfWorkLimit())
+         return false;
 
      // Check proof of work matches claimed amount
      if (hash > bnTarget)
-         return false; //error("CheckProofOfWork() : hash doesn't match nBits");
+         return false;
 
      return true;
  }
@@ -135,7 +134,7 @@ public:
         pchMessageStart[3] = 0x67;
         vAlertPubKey = ParseHex("04b5c5074ffb74f72557ca30681ef423e160f6a509b0591ce93c2d030f3b3306437b2ec5e95270b5aa3b172d04a8932e379ff1a51d80cc45504d4800b6cba872f6");
         nDefaultPort = 12929;
-        bnProofOfWorkLimit = ~uint256(0) >> 5; // Escrow starting difficulty is 1 / 2^12
+        bnProofOfWorkLimit = ~uint256(0) >> 20; // Escrow starting difficulty is 1 / 2^12
         nSubsidyHalvingInterval = 210000;
         nMaxReorganizationDepth = 100;
         nEnforceBlockUpgradeMajority = 750;
@@ -172,7 +171,7 @@ public:
          *     CTxOut(nValue=50.00000000, scriptPubKey=0xA9037BAC7050C479B121CF)
          *   vMerkleTree: e0028e
          */
-        const char* pszTimestamp = "new genesis v2";
+        const char* pszTimestamp = "new genesis v2.1";
         CMutableTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -186,7 +185,7 @@ public:
         genesis.nTime = 1546240700;
         genesis.nBits = 0x1e0ffff0;
         genesis.nNonce = 2016191;
-        /*
+
         std::cout << "main net" << std::endl;
         while (!CheckProof(genesis.GetHash(), genesis.nBits)) {
             genesis.nNonce ++;
@@ -195,7 +194,7 @@ public:
         std::cout << genesis.nNonce << std::endl;
         std::cout << genesis.GetHash().GetHex() << std::endl;
         std::cout << genesis.hashMerkleRoot.GetHex() << std::endl;
-        */
+
         hashGenesisBlock =  uint256("0x000006ad9f1a44a9f3912796f93c746056bef4fc58198283123d3a5e133f0eb1");
 
         hashGenesisBlock = genesis.GetHash();
