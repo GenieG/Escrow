@@ -74,10 +74,10 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
-    (0, uint256("0x00000ba75f5935d0f0b265c98075327f4f165e59ae6d8d99fbdbe407b9ff3f83"));
+    (0, uint256("0x0000008373fef8241a74c77441764ff096e83ee12064e81c328807e5a67e3cb9"));
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1545653389, // * UNIX timestamp of last checkpoint block
+    1546240700, // * UNIX timestamp of last checkpoint block
     0,          // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
     2000        // * estimated number of transactions per day after checkpoint
@@ -185,8 +185,8 @@ public:
         genesis.nVersion = 1;
         genesis.nTime = 1546240700;
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 470493;
-
+        genesis.nNonce = 1866352;
+        /*
         std::cout << "main net" << std::endl;
         while (!CheckProof(genesis.GetHash(), genesis.nBits)) {
             genesis.nNonce ++;
@@ -195,14 +195,14 @@ public:
         std::cout << genesis.nNonce << std::endl;
         std::cout << genesis.GetHash().GetHex() << std::endl;
         std::cout << genesis.hashMerkleRoot.GetHex() << std::endl;
-
-        hashGenesisBlock =  uint256("0x00000ba75f5935d0f0b265c98075327f4f165e59ae6d8d99fbdbe407b9ff3f83");
+        */
+        hashGenesisBlock =  uint256("0x0000008373fef8241a74c77441764ff096e83ee12064e81c328807e5a67e3cb9");
 
         hashGenesisBlock = genesis.GetHash();
         //printf("%s\n", hashGenesisBlock.ToString().c_str());
         //printf("%s\n", genesis.hashMerkleRoot.ToString().c_str());
-        assert(hashGenesisBlock == uint256("0x00000ba75f5935d0f0b265c98075327f4f165e59ae6d8d99fbdbe407b9ff3f83"));
-        assert(genesis.hashMerkleRoot == uint256("0x4ebe5a72637c1f53ba3852a0ddfb8e9f6a82f32bbeaa100cf23c835b5b2abf41"));
+        assert(hashGenesisBlock == uint256("0x0000008373fef8241a74c77441764ff096e83ee12064e81c328807e5a67e3cb9"));
+        assert(genesis.hashMerkleRoot == uint256("0x252c12f6f811b7376a02eb3d247e6f0f23574607cfb9d9238af9e24fadb4406f"));
 
 
         vSeeds.push_back(CDNSSeedData("Node-1", "159.89.4.8"));      // Single node address
