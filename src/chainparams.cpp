@@ -36,15 +36,16 @@ struct SeedSpec6 {
      bool fOverflow;
      uint256 bnTarget;
 
+
      bnTarget.SetCompact(nBits, &fNegative, &fOverflow);
 
      // Check range
-     if (fNegative || bnTarget == 0 || fOverflow || bnTarget > Params().ProofOfWorkLimit())
-         return false;
+     if (fNegative || bnTarget == 0 || fOverflow)
+         return false; //error("CheckProofOfWork() : nBits below minimum work");
 
      // Check proof of work matches claimed amount
      if (hash > bnTarget)
-         return false;
+         return false; //error("CheckProofOfWork() : hash doesn't match nBits");
 
      return true;
  }
@@ -171,7 +172,7 @@ public:
          *     CTxOut(nValue=50.00000000, scriptPubKey=0xA9037BAC7050C479B121CF)
          *   vMerkleTree: e0028e
          */
-        const char* pszTimestamp = "new genesis v2.1";
+        const char* pszTimestamp = "new genesis v2.6";
         CMutableTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -182,8 +183,8 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime = 1546240700;
-        genesis.nBits = 0x1e0ffff0;
+        genesis.nTime = 1546240800;
+        genesis.nBits = 0x1e0fffff;
         genesis.nNonce = 2016191;
 
         std::cout << "main net" << std::endl;
