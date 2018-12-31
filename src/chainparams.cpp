@@ -74,7 +74,7 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
-    (0, uint256("0x0000008373fef8241a74c77441764ff096e83ee12064e81c328807e5a67e3cb9"));
+    (0, uint256("0x001"));
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
     1546240700, // * UNIX timestamp of last checkpoint block
@@ -172,12 +172,12 @@ public:
          *     CTxOut(nValue=50.00000000, scriptPubKey=0xA9037BAC7050C479B121CF)
          *   vMerkleTree: e0028e
          */
-        const char* pszTimestamp = "new genesis";
+        const char* pszTimestamp = "new genesis v2";
         CMutableTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CScriptNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
-        txNew.vout[0].nValue = 250 * COIN;
+        txNew.vout[0].nValue = 50 * COIN;
         txNew.vout[0].scriptPubKey = CScript() << ParseHex("040d47582383aa89ac28b0b974b13973e79cbcefd6abfe2a754bea4855c8a9ca85a9acd06713f103a9319e4d3bcbf3e658501c732482e52772cf5722c228838ec5") << OP_CHECKSIG;
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
@@ -186,7 +186,7 @@ public:
         genesis.nTime = 1546240700;
         genesis.nBits = 0x1e0ffff0;
         genesis.nNonce = 1866352;
-        /*
+        
         std::cout << "main net" << std::endl;
         while (!CheckProof(genesis.GetHash(), genesis.nBits)) {
             genesis.nNonce ++;
@@ -195,7 +195,7 @@ public:
         std::cout << genesis.nNonce << std::endl;
         std::cout << genesis.GetHash().GetHex() << std::endl;
         std::cout << genesis.hashMerkleRoot.GetHex() << std::endl;
-        */
+
         hashGenesisBlock =  uint256("0x0000008373fef8241a74c77441764ff096e83ee12064e81c328807e5a67e3cb9");
 
         hashGenesisBlock = genesis.GetHash();
