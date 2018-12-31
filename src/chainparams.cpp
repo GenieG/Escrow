@@ -186,17 +186,33 @@ public:
         genesis.nTime = 1546240800;
         genesis.nBits = 0x1e0fffff;
         genesis.nNonce = 3427806;
-        /*
-        std::cout << "main net" << std::endl;
-        while (!CheckProof(genesis.GetHash(), genesis.nBits)) {
-            genesis.nNonce ++;
+        hashGenesisBlock =  uint256("0x");
+                if(false && genesis.GetHash() != uint256("0x"))
+        {
+              printf("MSearching for genesis block...\n");
+              //uint256 hashTarget;
+              //hashTarget.SetCompact(genesis.nBits);
+              uint256 hashTarget = CBigNum().SetCompact(genesis.nBits).getuint256();
+              while(uint256(genesis.GetHash()) > hashTarget)
+              {
+                  ++genesis.nNonce;
+                  if (genesis.nNonce == 0)
+                  {
+                      printf("Mainnet NONCE WRAPPED, incrementing time");
+                      std::cout << std::string("Mainnet NONCE WRAPPED, incrementing time:\n");
+                      ++genesis.nTime;
+                  }
+                  if (genesis.nNonce % 10000 == 0)
+                  {
+                      printf("Mainnet: nonce %08u: hash = %s \n", genesis.nNonce, genesis.GetHash().ToString().c_str());
+                  }
+              }
+              printf("Mainnet block.nTime = %u \n", genesis.nTime);
+              printf("Mainnet block.nNonce = %u \n", genesis.nNonce);
+              printf("Mainnet block.hashMerkleRoot: %s\n", genesis.hashMerkleRoot.ToString().c_str());
+              printf("Mainnet block.GetHash = %s\n", genesis.GetHash().ToString().c_str());
         }
-
-        std::cout << genesis.nNonce << std::endl;
-        std::cout << genesis.GetHash().GetHex() << std::endl;
-        std::cout << genesis.hashMerkleRoot.GetHex() << std::endl;
-        */
-        hashGenesisBlock =  uint256("0x0000065e218729009e9ee0ac404a836e3f45c7b0cf199602c1550be422723b7d");
+        //hashGenesisBlock =  uint256("0x0000065e218729009e9ee0ac404a836e3f45c7b0cf199602c1550be422723b7d");
 
         hashGenesisBlock = genesis.GetHash();
         //printf("%s\n", hashGenesisBlock.ToString().c_str());
