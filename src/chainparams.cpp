@@ -74,7 +74,7 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
-    (0, uint256("0x001"));
+    (0, uint256("0x000006ad9f1a44a9f3912796f93c746056bef4fc58198283123d3a5e133f0eb1"));
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
     1546240700, // * UNIX timestamp of last checkpoint block
@@ -185,8 +185,8 @@ public:
         genesis.nVersion = 1;
         genesis.nTime = 1546240700;
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 1866352;
-        
+        genesis.nNonce = 2016191;
+        /*
         std::cout << "main net" << std::endl;
         while (!CheckProof(genesis.GetHash(), genesis.nBits)) {
             genesis.nNonce ++;
@@ -195,20 +195,20 @@ public:
         std::cout << genesis.nNonce << std::endl;
         std::cout << genesis.GetHash().GetHex() << std::endl;
         std::cout << genesis.hashMerkleRoot.GetHex() << std::endl;
-
-        hashGenesisBlock =  uint256("0x0000008373fef8241a74c77441764ff096e83ee12064e81c328807e5a67e3cb9");
+        */
+        hashGenesisBlock =  uint256("0x000006ad9f1a44a9f3912796f93c746056bef4fc58198283123d3a5e133f0eb1");
 
         hashGenesisBlock = genesis.GetHash();
         //printf("%s\n", hashGenesisBlock.ToString().c_str());
         //printf("%s\n", genesis.hashMerkleRoot.ToString().c_str());
-        assert(hashGenesisBlock == uint256("0x0000008373fef8241a74c77441764ff096e83ee12064e81c328807e5a67e3cb9"));
-        assert(genesis.hashMerkleRoot == uint256("0x252c12f6f811b7376a02eb3d247e6f0f23574607cfb9d9238af9e24fadb4406f"));
+        assert(hashGenesisBlock == uint256("0x000006ad9f1a44a9f3912796f93c746056bef4fc58198283123d3a5e133f0eb1"));
+        assert(genesis.hashMerkleRoot == uint256("0xced387f0c1d9ea43a3b00e070cc4a772391f488b262ac0f629e98cbb5544c0ef"));
 
 
-        vSeeds.push_back(CDNSSeedData("Node-1", "159.89.4.8"));      // Single node address
-        vSeeds.push_back(CDNSSeedData("Node-2", "159.89.4.9"));       // Single node address
-        vSeeds.push_back(CDNSSeedData("Node-3", "159.89.4.10"));       // Single node address
-        vSeeds.push_back(CDNSSeedData("Node-4", "159.65.226.218"));
+        //vSeeds.push_back(CDNSSeedData("Node-1", "159.89.4.8"));      // Single node address
+        //vSeeds.push_back(CDNSSeedData("Node-2", "159.89.4.9"));       // Single node address
+        //vSeeds.push_back(CDNSSeedData("Node-3", "159.89.4.10"));       // Single node address
+        //vSeeds.push_back(CDNSSeedData("Node-4", "159.65.226.218"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 33);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 85);
