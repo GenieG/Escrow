@@ -172,7 +172,7 @@ public:
          *     CTxOut(nValue=50.00000000, scriptPubKey=0xA9037BAC7050C479B121CF)
          *   vMerkleTree: e0028e
          */
-        const char* pszTimestamp = "Alabama Wins National Title in Overtime Thriller.";
+        const char* pszTimestamp = "new genesis";
         CMutableTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -183,7 +183,7 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime = 1545653389;
+        genesis.nTime = 1546240700;
         genesis.nBits = 0x1e0ffff0;
         genesis.nNonce = 470493;
 
