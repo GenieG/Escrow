@@ -188,7 +188,7 @@ public:
         genesis.nNonce = 3824176;
         hashGenesisBlock =  uint256("0x000005f075688746184ec2d628ec60d34bce710639e2c1f47a4ad1d078b3aca8");
 
-      
+
         hashGenesisBlock = genesis.GetHash();
         //printf("%s\n", hashGenesisBlock.ToString().c_str());
         //printf("%s\n", genesis.hashMerkleRoot.ToString().c_str());
@@ -216,7 +216,7 @@ public:
         fDefaultConsistencyChecks = false;
         fRequireStandard = true;
         fMineBlocksOnDemand = false;
-        fSkipProofOfWorkCheck = false;          // default false
+        fSkipProofOfWorkCheck = true;          // default false
         fTestnetToBeDeprecatedFieldRPC = false;
         fHeadersFirstSyncingActive = false;
 
