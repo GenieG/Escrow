@@ -301,6 +301,7 @@ public:
         genesis.nTime = 1546322010;
         genesis.nNonce = 1332963;
 
+        /*
         std::cout << "Main test" << std::endl;
         while (!CheckProof(genesis.GetHash(), genesis.nBits)) {
             genesis.nNonce ++;
@@ -309,7 +310,7 @@ public:
         std::cout << genesis.nNonce << std::endl;
         std::cout << genesis.GetHash().GetHex() << std::endl;
         std::cout << genesis.hashMerkleRoot.GetHex() << std::endl;
-
+        */
         hashGenesisBlock = genesis.GetHash();
 
         //assert(hashGenesisBlock == uint256("0x0000034cffef200ff58675a7a7efe48a5862519ce8b61f5ab435a45be97a3070"));
