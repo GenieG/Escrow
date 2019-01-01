@@ -150,7 +150,7 @@ public:
         nMaxMoneyOut = 30000000 * COIN;
 
         /** Height or Time Based Activations **/
-        nLastPOWBlock = 200;
+        nLastPOWBlock = 30;
         nModifierUpdateBlock = 2147483646;
         nZerocoinStartHeight = 500000;
         nZerocoinStartTime = 1547546400;        // 11/24/2018 @ 8:00pm (UTC)
@@ -299,7 +299,7 @@ public:
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
         genesis.nTime = 1546322010;
-        genesis.nNonce = 34296;
+        genesis.nNonce = 1332963;
 
         std::cout << "Main test" << std::endl;
         while (!CheckProof(genesis.GetHash(), genesis.nBits)) {
@@ -312,7 +312,7 @@ public:
 
         hashGenesisBlock = genesis.GetHash();
 
-        //assert(hashGenesisBlock == uint256("00000874d6368a584d19762ab65bd623f8497fff686498afc986e13495feb3ee"));
+        //assert(hashGenesisBlock == uint256("0x0000034cffef200ff58675a7a7efe48a5862519ce8b61f5ab435a45be97a3070"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -375,8 +375,8 @@ public:
         bnProofOfWorkLimit = ~uint256(0) >> 1;
         genesis.nTime = 1546322010;
         genesis.nBits = 0x207fffff;
-        genesis.nNonce = 3;
-
+        genesis.nNonce = 4;
+        /*
         std::cout << "Main regnet" << std::endl;
         while (!CheckProof(genesis.GetHash(), genesis.nBits)) {
             genesis.nNonce ++;
@@ -385,11 +385,11 @@ public:
         std::cout << genesis.nNonce << std::endl;
         std::cout << genesis.GetHash().GetHex() << std::endl;
         std::cout << genesis.hashMerkleRoot.GetHex() << std::endl;
-
+        */
         hashGenesisBlock = genesis.GetHash();
         nDefaultPort = 12936;
 
-        //assert(hashGenesisBlock == uint256("6f2450eb7a7724b3fbdf5b3418a0fcae3899eacc7e0199274cfd0fb8ff833d9f"));
+        //assert(hashGenesisBlock == uint256("0x6ad9b6f4971d200e30833e55bb1b53ad0be72fd8f5590935494429c044b307eb"));
 
         vFixedSeeds.clear(); //! Testnet mode doesn't have any fixed seeds.
         vSeeds.clear();      //! Testnet mode doesn't have any DNS seeds.
