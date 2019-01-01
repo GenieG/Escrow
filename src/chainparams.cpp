@@ -184,7 +184,7 @@ public:
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
         genesis.nTime = 1546322010;
-        genesis.nBits = 0x1e0fffff;
+        genesis.nBits = 0x1e0ffff0;
         genesis.nNonce = 5887657;
         /*
         std::cout << "Main net" << std::endl;
