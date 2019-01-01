@@ -185,8 +185,8 @@ public:
         genesis.nVersion = 1;
         genesis.nTime = 1546322010;
         genesis.nBits = 0x1e0fffff;
-        genesis.nNonce = 4903193;
-
+        genesis.nNonce = 5887657;
+        /*
         std::cout << "Main net" << std::endl;
         while (!CheckProof(genesis.GetHash(), genesis.nBits)) {
             genesis.nNonce ++;
@@ -195,15 +195,15 @@ public:
         std::cout << genesis.nNonce << std::endl;
         std::cout << genesis.GetHash().GetHex() << std::endl;
         std::cout << genesis.hashMerkleRoot.GetHex() << std::endl;
-
-        hashGenesisBlock =  uint256("0x00000b6ff14ef41646bca2624c5289e0afd41ea9672226371c72389543736e2b");
+        */
+        hashGenesisBlock =  uint256("0x0000072e0ece7c9eb481345c56f71a6904950d542e3ec803daba65e968b67a52");
 
 
         hashGenesisBlock = genesis.GetHash();
         //printf("%s\n", hashGenesisBlock.ToString().c_str());
         //printf("%s\n", genesis.hashMerkleRoot.ToString().c_str());
-        assert(hashGenesisBlock == uint256("0x00000b6ff14ef41646bca2624c5289e0afd41ea9672226371c72389543736e2b"));
-        assert(genesis.hashMerkleRoot == uint256("0x0c24d335c1a5e95a8de7f5db7c1deed2200eb42931262556d33829871ef82e1a"));
+        assert(hashGenesisBlock == uint256("0x0000072e0ece7c9eb481345c56f71a6904950d542e3ec803daba65e968b67a52"));
+        assert(genesis.hashMerkleRoot == uint256("0x14dddc020976f50e254013d373f70ef5987880858496bd3afc6100a3c61ff946"));
 
 
         //vSeeds.push_back(CDNSSeedData("Node-1", "159.89.4.8"));      // Single node address
