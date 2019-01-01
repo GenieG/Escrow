@@ -185,8 +185,8 @@ public:
         genesis.nVersion = 1;
         genesis.nTime = 1546322010;
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 5887657;
-
+        genesis.nNonce = 6100683;
+        /*
         std::cout << "Main net" << std::endl;
         while (!CheckProof(genesis.GetHash(), genesis.nBits)) {
             genesis.nNonce ++;
@@ -195,14 +195,14 @@ public:
         std::cout << genesis.nNonce << std::endl;
         std::cout << genesis.GetHash().GetHex() << std::endl;
         std::cout << genesis.hashMerkleRoot.GetHex() << std::endl;
-        
-        hashGenesisBlock =  uint256("0x0000072e0ece7c9eb481345c56f71a6904950d542e3ec803daba65e968b67a52");
+        */
+        hashGenesisBlock =  uint256("0x0000043280d799d67e373e66466cd2e3430fde201d91e39ceba5baf20399787a");
 
 
         hashGenesisBlock = genesis.GetHash();
         //printf("%s\n", hashGenesisBlock.ToString().c_str());
         //printf("%s\n", genesis.hashMerkleRoot.ToString().c_str());
-        assert(hashGenesisBlock == uint256("0x0000072e0ece7c9eb481345c56f71a6904950d542e3ec803daba65e968b67a52"));
+        assert(hashGenesisBlock == uint256("0x0000043280d799d67e373e66466cd2e3430fde201d91e39ceba5baf20399787a"));
         assert(genesis.hashMerkleRoot == uint256("0x14dddc020976f50e254013d373f70ef5987880858496bd3afc6100a3c61ff946"));
 
 
