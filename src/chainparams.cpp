@@ -186,7 +186,7 @@ public:
         genesis.nTime = 1546322010;
         genesis.nBits = 0x1e0ffff0;
         genesis.nNonce = 5887657;
-        /*
+
         std::cout << "Main net" << std::endl;
         while (!CheckProof(genesis.GetHash(), genesis.nBits)) {
             genesis.nNonce ++;
@@ -195,7 +195,7 @@ public:
         std::cout << genesis.nNonce << std::endl;
         std::cout << genesis.GetHash().GetHex() << std::endl;
         std::cout << genesis.hashMerkleRoot.GetHex() << std::endl;
-        */
+        
         hashGenesisBlock =  uint256("0x0000072e0ece7c9eb481345c56f71a6904950d542e3ec803daba65e968b67a52");
 
 
