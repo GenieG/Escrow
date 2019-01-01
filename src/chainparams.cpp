@@ -172,7 +172,7 @@ public:
          *     CTxOut(nValue=50.00000000, scriptPubKey=0xA9037BAC7050C479B121CF)
          *   vMerkleTree: e0028e
          */
-        const char* pszTimestamp = "new genesis v3.1 2019";
+        const char* pszTimestamp = "new genesis v3.2 2019";
         CMutableTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -188,8 +188,8 @@ public:
         genesis.nNonce = 20884763;
 
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x0000067792cf598eb1b449dfd0a4471d78c0f10baef20f3391777ffb686bc2ae"));
-        assert(genesis.hashMerkleRoot == uint256("0x1d22db5b5d3bed58a68444bc6afb8c4f2e45aac42eca4230050adff72951a1d5"));
+        assert(hashGenesisBlock == uint256("0x00000ba60920a006858cad88600d1379fae813d1d3f4d51ed6c70451f8c6c39e"));
+        assert(genesis.hashMerkleRoot == uint256("0xbd9b3a5326df30f14e0980fd3b2b82de5921ff13521f3ae3cc07397099fed7fb"));
 
         //vSeeds.push_back(CDNSSeedData("Node-1", "159.89.4.8"));      // Single node address
         //vSeeds.push_back(CDNSSeedData("Node-2", "159.89.4.9"));       // Single node address
