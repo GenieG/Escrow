@@ -172,7 +172,7 @@ public:
          *     CTxOut(nValue=50.00000000, scriptPubKey=0xA9037BAC7050C479B121CF)
          *   vMerkleTree: e0028e
          */
-        const char* pszTimestamp = "new genesis v3 2019";
+        const char* pszTimestamp = "new genesis v3.1 2019";
         CMutableTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -185,26 +185,11 @@ public:
         genesis.nVersion = 1;
         genesis.nTime = 1546322010;
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 6100683;
-        /*
-        std::cout << "Main net" << std::endl;
-        while (!CheckProof(genesis.GetHash(), genesis.nBits)) {
-            genesis.nNonce ++;
-        }
-
-        std::cout << genesis.nNonce << std::endl;
-        std::cout << genesis.GetHash().GetHex() << std::endl;
-        std::cout << genesis.hashMerkleRoot.GetHex() << std::endl;
-        */
-        hashGenesisBlock =  uint256("0x0000043280d799d67e373e66466cd2e3430fde201d91e39ceba5baf20399787a");
-
+        genesis.nNonce = 20884763;
 
         hashGenesisBlock = genesis.GetHash();
-        //printf("%s\n", hashGenesisBlock.ToString().c_str());
-        //printf("%s\n", genesis.hashMerkleRoot.ToString().c_str());
-        assert(hashGenesisBlock == uint256("0x0000043280d799d67e373e66466cd2e3430fde201d91e39ceba5baf20399787a"));
-        assert(genesis.hashMerkleRoot == uint256("0x14dddc020976f50e254013d373f70ef5987880858496bd3afc6100a3c61ff946"));
-
+        assert(hashGenesisBlock == uint256("0x0000067792cf598eb1b449dfd0a4471d78c0f10baef20f3391777ffb686bc2ae"));
+        assert(genesis.hashMerkleRoot == uint256("0x1d22db5b5d3bed58a68444bc6afb8c4f2e45aac42eca4230050adff72951a1d5"));
 
         //vSeeds.push_back(CDNSSeedData("Node-1", "159.89.4.8"));      // Single node address
         //vSeeds.push_back(CDNSSeedData("Node-2", "159.89.4.9"));       // Single node address
